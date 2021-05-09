@@ -1,11 +1,8 @@
-
 const prompt = require("prompt-sync")({sigint: true});
-
-let msg  = prompt("Enter + or -: ");
 
 function view(counter){
     return "Count: " + counter
-    + "\n(+) (-)" + "\n(q) for quit"
+    + "\n(+) (-)"
     + "\nWhat would you do? "
 }
 
@@ -15,8 +12,16 @@ function update(msg,counter){
     else{return counter}
 }
 
+function app(counter){
+    while(true){
+        const currentView = view(counter)
+        console.clear()
+        console.log(currentView)
+        const msg  = prompt("Enter + or -: ")
+        counter = update(msg,counter)
+    }
+}
 
-//console.log(view(4))
-console.log(update(msg,50))
+app(0)
 
 
